@@ -216,11 +216,11 @@ body {
 /* Hero Form */
 .hero-form-container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 30px 25px;
-    border-radius: 8px;
+    padding: 40px 50px;
+    border-radius: 10px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     width: 100% !important;
-    max-width: 600px !important;
+    max-width: 800px !important;
 }
 
 .appointment-form .form-group {
