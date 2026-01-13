@@ -170,7 +170,7 @@ body {
 }
 
 .hero-content {
-    max-width: 420px;
+    max-width: 600px !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -219,8 +219,8 @@ body {
     padding: 30px 25px;
     border-radius: 8px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 350px;
+    width: 100% !important;
+    max-width: 600px !important;
 }
 
 .appointment-form .form-group {
@@ -377,9 +377,13 @@ body {
 
 .testimonial-card {
     position: relative;
-    display: flex;
+    display: none; /* Hidden by default */
     align-items: center;
     justify-content: center;
+}
+
+.testimonial-card.active {
+    display: flex; /* Only show active */
 }
 
 .testimonial-bg {
@@ -877,7 +881,7 @@ body {
     }
 
     .hero-content {
-        max-width: 380px;
+        max-width: 100%;
     }
 
     .camp-icon {
@@ -1160,7 +1164,7 @@ body {
 
     .hero-form-container {
         padding: 30px 25px;
-        max-width: 340px;
+        max-width: 100%;
         margin: 0 auto;
         background: #ffffff;
         box-shadow: 0 10px 40px rgba(106, 44, 145, 0.2);
@@ -1508,7 +1512,7 @@ body {
     
     .hero-form-container {
         padding: 20px 15px;
-        max-width: 300px;
+        max-width: 100%;
     }
     
     .appointment-form .form-group {
@@ -1739,7 +1743,7 @@ body {
     
     .hero-form-container {
         padding: 18px 12px;
-        max-width: 280px;
+        max-width: 100%;
         border-radius: 6px;
     }
     

@@ -77,4 +77,70 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize carousel position
         goToSlide(0);
     }
+
+    // Testimonial functionality
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    const prevTestimonialBtn = document.querySelector('.testimonial-nav.prev-nav');
+    const nextTestimonialBtn = document.querySelector('.testimonial-nav.next-nav');
+    const testimonialsWrapper = document.querySelector('.testimonials-wrapper');
+
+    if (testimonials.length > 0 && prevTestimonialBtn && nextTestimonialBtn) {
+        let currentTestimonialIndex = 0;
+
+        function showTestimonial(index) {
+            // Remove active class from all
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            // Add active class to current
+            testimonials[index].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            currentTestimonialIndex++;
+            if (currentTestimonialIndex >= testimonials.length) {
+                currentTestimonialIndex = 0;
+            }
+            showTestimonial(currentTestimonialIndex);
+        }
+
+        function prevTestimonial() {
+            currentTestimonialIndex--;
+            if (currentTestimonialIndex < 0) {
+                currentTestimonialIndex = testimonials.length - 1;
+            }
+            showTestimonial(currentTestimonialIndex);
+        }
+
+        nextTestimonialBtn.addEventListener('click', nextTestimonial);
+        prevTestimonialBtn.addEventListener('click', prevTestimonial);
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (testimonialsWrapper) {
+            testimonialsWrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            testimonialsWrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (diff > swipeThreshold) {
+                // Swiped left - go to next
+                nextTestimonial();
+            } else if (diff < -swipeThreshold) {
+                // Swiped right - go to previous
+                prevTestimonial();
+            }
+        }
+    }
 });
